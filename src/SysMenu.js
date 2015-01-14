@@ -37,8 +37,17 @@ var MenuLayer = cc.Layer.extend({
 
         this.addChild(menu,1);
 
+        //var Button = new ccui.Button(res.start_n_png,res.start_s_png,"","");
+        //Button.setTouchEnabled(true);
+        //Button.setPressedActionEnabled(true);
+        //Button.x = winSize.width / 2;
+        //Button.y = winSize.height / 2;
+        //Button.scale = 0.5;
+        //Button.addTouchEventListener(this.onNewGame,this);
+        //this.addChild(Button,10);
+
         //背景图片
-        var bgSpirit = new cc.Sprite(res.play_background_jpg);
+        var bgSpirit = new cc.Sprite(res.cloud_jpg);
         bgSpirit.attr({
             x: winSize.width / 2,
             y: winSize.height / 2,
@@ -65,11 +74,15 @@ var MenuLayer = cc.Layer.extend({
 
     onNewGame: function(){
         console.log("new game");
-        cc.LoaderScene.preload(g_resources, function () {
-            var scene = new GamePlayScene();
-            cc.director.runScene(new cc.TransitionFade(1.2, scene));
-        }, this);
+        GLOBAL.Score = 0;
+        GLOBAL.Time = 10;
+        //cc.LoaderScene.preload(g_resources, function () {
+        //    var scene = new GamePlayScene();
+        //    cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        //}, this);
 
+        var scene = new GamePlayScene();
+        cc.director.runScene(new cc.TransitionFade(1.2, scene));
     }
 });
 

@@ -8,12 +8,17 @@
     "renderMode" : 0,
     "engineDir":"frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d"],
+    "modules" : ["cocos2d", "extensions"],
 
     "jsList" : [
         "src/resource.js",
         "src/SysMenu.js",
-        "src/GamePlay.js",
-        "src/app.js"
+        "src/app.js",
+        "src/GamePlay/GameContentLayer.js",
+        "src/GamePlay/GameHubLayer.js",
+        "src/GamePlay/GamePlayScene.js",
+        "src/Global.js",
+        "src/GameOver/GameOverLayer.js",
+        "src/GameOver/GameOverScene.js"
     ]
 }

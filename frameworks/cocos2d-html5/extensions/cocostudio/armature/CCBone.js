@@ -194,7 +194,7 @@ ccs.Bone = ccs.Node.extend(/** @lends ccs.Bone# */{
                 this._worldTransform = cc.affineTransformConcat(this._worldTransform, this._armature.getNodeToParentTransform());            //TODO TransformConcat
         }
 
-        ccs.displayFactory.updateDisplay(this, delta, this._boneTransformDirty || this._armature.getArmatureTransformDirty());
+        ccs.displayFactory.updateResultDisplay(this, delta, this._boneTransformDirty || this._armature.getArmatureTransformDirty());
         for(var i=0; i<this._children.length; i++) {
             var childBone = this._children[i];
             childBone.update(delta);
