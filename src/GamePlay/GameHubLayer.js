@@ -24,7 +24,7 @@ var GameHubLayer = cc.Layer.extend({
         });
         this.addChild(time);
 
-        this._timeLabel = new cc.LabelTTF("10", "Arial", 12);
+        this._timeLabel = new cc.LabelTTF(GLOBAL.Time, "Arial", 12);
         this._timeLabel.setFontFillColor(cc.color.BLACK);
         this._timeLabel.attr({
             x: 90,

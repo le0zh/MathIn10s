@@ -77,6 +77,15 @@ var GameContentLayer = cc.Layer.extend({
         //暂停
         var pauseMenuItem = new cc.MenuItemFont("pause", function(){
             console.log("pause");
+            if(GLOBAL.Pause == true){
+                GLOBAL.Pause = false;
+                pauseMenuItem.setString("pause");
+                cc.director.getScheduler().resumeTarget(this);
+            }else if(GLOBAL.Pause == false){
+                GLOBAL.Pause = true;
+                pauseMenuItem.setString("resume");
+                cc.director.getScheduler().pauseTarget(this);
+            }
         }, this);
         pauseMenuItem.setFontSize(20);
         pauseMenuItem.setColor(cc.color.BLACK);
@@ -127,7 +136,13 @@ var GameContentLayer = cc.Layer.extend({
         this.addChild(menu2,10);
 
         //控制面板
-        var controlPadMenu = new cc.Menu();
+       
+
+        return true;
+    },
+
+    initControlPanel: function() {
+         var controlPadMenu = new cc.Menu();
         for(var i =0; i< 10; i++){
             var item = this.controllerPadFactory(i);
             console.log(Math.floor(i/3));
@@ -146,8 +161,6 @@ var GameContentLayer = cc.Layer.extend({
 
         //开启倒计时
         this.schedule(this.updateTime, 1);
-
-        return true;
     },
 
     controllerPadFactory: function (number) {
@@ -264,13 +277,13 @@ var GameContentLayer = cc.Layer.extend({
 
     updateTime: function(){
         GLOBAL.Time--;
+        console.log(GLOBAL.Time);
         if(GLOBAL.Time <= 0){
             GLOBAL.Time = 0;
             cc.director.getScheduler().pauseTarget(this);
 
             var scene = new GameOverScene();
             cc.director.runScene(new cc.TransitionFade(1.2, scene));
-
         }
 
         this._hubLayer.updateTimeDisplay();

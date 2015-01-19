@@ -74,8 +74,8 @@ var MenuLayer = cc.Layer.extend({
 
     onNewGame: function(){
         console.log("new game");
-        GLOBAL.Score = 0;
-        GLOBAL.Time = 10;
+        GLOBAL.Reset();
+
         //cc.LoaderScene.preload(g_resources, function () {
         //    var scene = new GamePlayScene();
         //    cc.director.runScene(new cc.TransitionFade(1.2, scene));
